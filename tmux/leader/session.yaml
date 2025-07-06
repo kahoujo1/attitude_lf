@@ -1,0 +1,36 @@
+# do not modify these
+root: ./
+name: simulation
+socket_name: mrs
+attach: false
+tmux_options: -f /etc/ctu-mrs/tmux.conf
+# you can modify these
+pre_window: export RUN_TYPE=simulation; export GUI=false; export UAV_TYPE=f450; export UAV_NUM_1=36; export UAV_NUM_2=40; export UAV_NAME_1=uav$UAV_NUM_1; export UAV_NAME_2=uav$UAV_NUM_2; export PLATFORM_CONFIG=`rospack find mrs_uav_gazebo_simulation`/config/mrs_uav_system/$UAV_TYPE.yaml; export WORLD_CONFIG=./config/world_config.yaml; export NETWORK_CONFIG=./config/network_config.yaml
+startup_window: status
+windows:
+  - target_trajectory:
+      layout: tiled
+      panes:
+        - export UAV_NAME=$UAV_NAME_2; history -s roslaunch leader_follower_controller_plugin start_tracking.launch
+  - rqt:
+      layout: tilted
+      panes:
+        - export ROS_MASTER_URI=http://uav36:11311; export UAV_NAME=$UAV_NAME_1; rqt
+  # - rviz:
+  #     layout: tiled
+  #     panes:
+  #       - export ROS_MASTER_URI=http://uav25:11311; export UAV_NAME=$UAV_NAME_1; waitForHw; rosrun rviz rviz -d ./config/rviz_rl.rviz
+  #       - export UAV_NAME=$UAV_NAME_1; waitForHw; roslaunch mrs_rviz_plugins rviz_interface.launch
+  # - rviz_uav_models:
+  #     layout: tiled
+  #     panes:
+  #       - export UAV_NAME=$UAV_NAME_1; waitForHw; roslaunch mrs_rviz_plugins load_robot.launch
+  #       - export UAV_NAME=$UAV_NAME_2; waitForHw; roslaunch mrs_rviz_plugins load_robot.launch
+  # - dynamic_reconfigure:
+  #     layout: tiled
+  #     panes:
+  #       - export UAV_NAME=$UAV_NAME_1; waitForControl; rosrun rqt_reconfigure rqt_reconfigure
+  - plotJuggler:
+      layout: tiled
+      panes:
+        - export ROS_MASTER_URI=http://uav36:11311; export UAV_NAME=$UAV_NAME_1; waitForHw; rosrun plotjuggler plotjuggler -l ./plt_juggler_leader.xml

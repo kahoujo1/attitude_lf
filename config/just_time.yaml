@@ -1,0 +1,72 @@
+# mpc controller parameters
+mpc_enable:                     1
+#MPC cost function parameters
+#Q function parameters (state -> state)
+cost_Q_pos_vertical:            500
+cost_Q_pos_horizontal:          200
+cost_Q_velocity_vertical:       0
+cost_Q_velocity_horizontal:     0
+cost_Q_input_reg:               0
+
+# R function parameters (input -> input) the price of input increments
+cost_R_horizontal:              600
+cost_R_vertical:                10
+
+# MPC constraints
+max_input_angle:                0.2
+slack_cost:                     1000
+# state constraints
+max_vel_horizontal:             10
+max_angles:                     0.4
+# input rates
+max_attitude_ctrl_rate:         0.4
+max_thrust_rate:                3.0
+reference_time_scale_factor:    0.9
+
+time_decay_alpha:               2.0
+
+# Leader estimation parameters
+angle_variance:                 0.01
+vel_variance:                   0.01
+position_noise:                 0.01
+
+# angle predictor
+array_size:                     10
+poly_order:                     3
+poly_lambda:                    0.1
+
+# LKF parameters
+# process noise covariance matrix
+lkf_Q_pos_vertical:             0.6
+lkf_Q_pos_horizontal:           0.1
+lkf_Q_vel_horizontal:           3.0
+lkf_R_position:                 1
+
+#UKF parameters
+# process noise covariance matrix
+ukf_Q_pos_vertical:             0.6
+ukf_Q_pos_horizontal:           0.1
+ukf_Q_vel_horizontal:           3.0
+ukf_R_position:                 1
+ukf_alpha:                      0.001
+ukf_kappa:                      0.0
+
+# attitude measurement refresh rate
+attitude_refresh_rate:      60
+
+
+# pid controller parameters
+ctrl_enable:          1.0
+hor_Kp:               1.0
+vert_Kp:              5.0
+hor_Ki:               0.0
+vert_Ki:              1.0
+hor_Kd:               0.5
+vert_Kd:              1.5
+hor_sat:              0.2
+vert_sat:             5.0
+
+desired_roll:         0.03 # [rad]
+desired_pitch:        0.02 # [rad]
+desired_yaw:          0.1 # [rad]
+desired_thrust_force: 0.2 # [N], additional to gravity compensation

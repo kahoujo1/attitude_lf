@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+ <tabbed_widget parent="main_window" name="Main Window">
+  <Tab tab_name="control atitude" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.005215" top="0.090121" right="339.006582" left="334.007495"/>
+       <limitY/>
+       <curve color="#1f77b4" name="/uav25/control_manager/leader_follower_controller/control_action/ref_attitude/roll"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.420000" top="0.420000" right="339.006582" left="334.007495"/>
+       <limitY/>
+       <curve color="#d62728" name="/uav25/control_manager/leader_follower_controller/control_action/ref_attitude/pitch"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="ref error" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockSplitter orientation="|" count="2" sizes="0.5;0.5">
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-1.322591" top="1.922112" right="339.000726" left="334.010590"/>
+        <limitY/>
+        <curve color="#1f77b4" name="/uav25/control_manager/leader_follower_controller/reference_error/x"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-0.545016" top="-0.054277" right="339.000726" left="334.010590"/>
+        <limitY/>
+        <curve color="#d62728" name="/uav25/control_manager/leader_follower_controller/reference_error/y"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="0.339361" top="1.400890" right="339.000726" left="334.010590"/>
+       <limitY/>
+       <curve color="#1ac938" name="/uav25/control_manager/leader_follower_controller/reference_error/z"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="position" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockSplitter orientation="|" count="2" sizes="0.5;0.5">
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-51.010675" top="-44.007847" right="347.390362" left="334.010578"/>
+        <limitY/>
+        <curve color="#ff2100" name="/uav25/control_manager/leader_follower_controller/reference_pose/pose/position/x"/>
+        <curve color="#000cff" name="/uav25/estimation_manager/odom_main/pose/pose/position/x"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="10.754997" top="11.896368" right="347.390362" left="334.010578"/>
+        <limitY/>
+        <curve color="#ff2100" name="/uav25/control_manager/leader_follower_controller/reference_pose/pose/position/y"/>
+        <curve color="#000cff" name="/uav25/estimation_manager/odom_main/pose/pose/position/y"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="13.152390" top="14.196297" right="347.390362" left="334.010578"/>
+       <limitY/>
+       <curve color="#ff2100" name="/uav25/control_manager/leader_follower_controller/reference_pose/pose/position/z"/>
+       <curve color="#000cff" name="/uav25/estimation_manager/odom_main/pose/pose/position/z"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="velocity" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockSplitter orientation="|" count="2" sizes="0.5;0.5">
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-0.260991" top="0.665297" right="347.396135" left="342.390379"/>
+        <limitY/>
+        <curve color="#000cff" name="/uav25/estimation_manager/odom_main/twist/twist/linear/x"/>
+        <curve color="#ff0e24" name="/uav32/estimation_manager/odom_main/twist/twist/linear/x"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-0.194115" top="0.271188" right="347.396135" left="342.390379"/>
+        <limitY/>
+        <curve color="#000cff" name="/uav25/estimation_manager/odom_main/twist/twist/linear/y"/>
+        <curve color="#ff0e24" name="/uav32/estimation_manager/odom_main/twist/twist/linear/y"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.507384" top="0.157994" right="347.396135" left="342.390379"/>
+       <limitY/>
+       <curve color="#000cff" name="/uav25/estimation_manager/odom_main/twist/twist/linear/z"/>
+       <curve color="#ff0e24" name="/uav32/estimation_manager/odom_main/twist/twist/linear/z"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="kf_pos" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockSplitter orientation="|" count="2" sizes="0.5;0.5">
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-41.010520" top="-34.008180" right="347.396135" left="334.010524"/>
+        <limitY/>
+        <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/position/x"/>
+        <curve color="#ff0e24" name="/uav32/estimation_manager/odom_main/pose/pose/position/x"/>
+        <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/position/x"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="10.769380" top="11.303321" right="347.396135" left="334.010524"/>
+        <limitY/>
+        <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/position/y"/>
+        <curve color="#ff0e24" name="/uav32/estimation_manager/odom_main/pose/pose/position/y"/>
+        <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/position/y"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="12.771583" top="14.205670" right="347.396135" left="334.010524"/>
+       <limitY/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/position/z"/>
+       <curve color="#ff0e24" name="/uav32/estimation_manager/odom_main/pose/pose/position/z"/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/position/z"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="kf_vel" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockSplitter orientation="|" count="2" sizes="0.5;0.5">
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-4.450095" top="5.549022" right="347.396135" left="334.010524"/>
+        <limitY/>
+        <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/velocity/x"/>
+        <curve color="#ff1c00" name="/uav32/estimation_manager/odom_main/twist/twist/linear/x"/>
+        <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/velocity/x"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+        <range bottom="-0.532907" top="0.339569" right="347.396135" left="334.010524"/>
+        <limitY/>
+        <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/velocity/y"/>
+        <curve color="#ff2100" name="/uav32/estimation_manager/odom_main/twist/twist/linear/y"/>
+        <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/velocity/y"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.508299" top="0.195549" right="347.396135" left="334.010524"/>
+       <limitY/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/velocity/z"/>
+       <curve color="#ff2100" name="/uav32/estimation_manager/odom_main/twist/twist/linear/z"/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/velocity/z"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="kf_att" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.548753;0.451247">
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.079300" top="0.113748" right="339.000649" left="334.010326"/>
+       <limitY/>
+       <curve color="#ff1c00" name="/uav25/control_manager/leader_follower_controller/leader_attitude/pose/pose/position/x"/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/attitude/roll"/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/attitude/roll"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.859131" top="0.757565" right="339.000649" left="334.010326"/>
+       <limitY/>
+       <curve color="#ff1c00" name="/uav25/control_manager/leader_follower_controller/leader_attitude/pose/pose/position/y"/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/attitude/pitch"/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/attitude/pitch"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="kf_angular" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.069006" top="0.091468" right="339.000649" left="334.010524"/>
+       <limitY/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/angular_vel/roll"/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/angular_vel/roll"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.641974" top="0.445596" right="339.000649" left="334.010524"/>
+       <limitY/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/angular_vel/pitch"/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/angular_vel/pitch"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="kf_acc" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="2" sizes="0.5;0.5">
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-7.308655" top="6.794107" right="339.000649" left="334.010524"/>
+       <limitY/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/acceleration/x"/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/acceleration/x"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot flip_y="false" mode="TimeSeries" flip_x="false" style="Lines">
+       <range bottom="-0.865256" top="0.776413" right="339.000649" left="334.010524"/>
+       <limitY/>
+       <curve color="#1b8f00" name="/uav25/control_manager/leader_follower_controller/lkf_reduced_state/acceleration/y"/>
+       <curve color="#000cff" name="/uav25/control_manager/leader_follower_controller/lkf_state/acceleration/y"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <currentTabIndex index="2"/>
+ </tabbed_widget>
+ <use_relative_time_offset enabled="1"/>
+ <!-- - - - - - - - - - - - - - - -->
+ <!-- - - - - - - - - - - - - - - -->
+ <Plugins>
+  <plugin ID="DataLoad CSV">
+   <parameters time_axis="" delimiter="0"/>
+  </plugin>
+  <plugin ID="DataLoad MCAP"/>
+  <plugin ID="DataLoad ROS bags">
+   <use_header_stamp value="false"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+   <boolean_strings_to_number value="true"/>
+   <remove_suffix_from_strings value="true"/>
+   <selected_topics value=""/>
+  </plugin>
+  <plugin ID="DataLoad ULog"/>
+  <plugin ID="ROS Topic Subscriber">
+   <use_header_stamp value="false"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+   <boolean_strings_to_number value="true"/>
+   <remove_suffix_from_strings value="true"/>
+   <selected_topics value="/uav25/control_manager/leader_follower_controller/control_action;/uav25/control_manager/leader_follower_controller/lkf_reduced_state;/uav25/control_manager/leader_follower_controller/lkf_state;/uav25/control_manager/leader_follower_controller/reference_error;/uav25/control_manager/leader_follower_controller/reference_pose;/uav25/estimation_manager/odom_main;/uav32/estimation_manager/odom_main;/uav25/control_manager/leader_follower_controller/leader_attitude"/>
+  </plugin>
+  <plugin ID="UDP Server"/>
+  <plugin ID="WebSocket Server"/>
+  <plugin ID="ZMQ Subscriber"/>
+  <plugin ID="Fast Fourier Transform"/>
+  <plugin ID="Quaternion to RPY"/>
+  <plugin ID="Reactive Script Editor">
+   <library code="--[[ Helper function to create a series from arrays&#xa;&#xa; new_series: a series previously created with ScatterXY.new(name)&#xa; prefix:     prefix of the timeseries, before the index of the array&#xa; suffix_X:   suffix to complete the name of the series containing the X value. If [nil], use the index of the array.&#xa; suffix_Y:   suffix to complete the name of the series containing the Y value&#xa; timestamp:   usually the tracker_time variable&#xa;              &#xa; Example:&#xa; &#xa; Assuming we have multiple series in the form:&#xa; &#xa;   /trajectory/node.{X}/position/x&#xa;   /trajectory/node.{X}/position/y&#xa;   &#xa; where {N} is the index of the array (integer). We can create a reactive series from the array with:&#xa; &#xa;   new_series = ScatterXY.new(&quot;my_trajectory&quot;) &#xa;   CreateSeriesFromArray( new_series, &quot;/trajectory/node&quot;, &quot;position/x&quot;, &quot;position/y&quot;, tracker_time );&#xa;--]]&#xa;&#xa;function CreateSeriesFromArray( new_series, prefix, suffix_X, suffix_Y, timestamp )&#xa;  &#xa;  --- clear previous values&#xa;  new_series:clear()&#xa;  &#xa;  --- Append points to new_series&#xa;  index = 0&#xa;  while(true) do&#xa;&#xa;    x = index;&#xa;    -- if not nil, get the X coordinate from a series&#xa;    if suffix_X ~= nil then &#xa;      series_x = TimeseriesView.find( string.format( &quot;%s.%d/%s&quot;, prefix, index, suffix_X) )&#xa;      if series_x == nil then break end&#xa;      x = series_x:atTime(timestamp)&#x9; &#xa;    end&#xa;    &#xa;    series_y = TimeseriesView.find( string.format( &quot;%s.%d/%s&quot;, prefix, index, suffix_Y) )&#xa;    if series_y == nil then break end &#xa;    y = series_y:atTime(timestamp)&#xa;    &#xa;    new_series:push_back(x,y)&#xa;    index = index+1&#xa;  end&#xa;end&#xa;&#xa;--[[ Similar to the built-in function GetSeriesN;"/>

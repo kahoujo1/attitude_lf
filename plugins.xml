@@ -1,0 +1,5 @@
+<library path="lib/libLeaderFollowerController">
+  <class name="leader_follower_controller_plugin/LeaderFollowerController" type="leader_follower_controller_plugin::leader_follower_controller::LeaderFollowerController" base_class_type="mrs_uav_managers::Controller">
+    <description>This is the Leader-Follower Controller.</description>
+  </class>
+</library>

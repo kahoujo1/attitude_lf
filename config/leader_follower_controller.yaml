@@ -1,0 +1,83 @@
+# mpc controller parameters
+mpc_enable:                     1
+#MPC cost function parameters
+#Q function parameters (state -> state)
+cost_Q_pos_vertical:            500
+cost_Q_pos_horizontal:          100
+cost_Q_velocity_vertical:       5
+cost_Q_velocity_horizontal:     5
+cost_Q_input_reg:               2000
+cost_Q_thrust:                  10
+
+# R function parameters (input -> input) the price of input increments
+cost_R_horizontal:              100000.0
+cost_R_vertical:                1000.0
+
+# MPC constraints
+max_input_angle:                0.5
+slack_cost:                     100
+# state constraints
+max_vel_horizontal:             10
+# input rates
+max_attitude_ctrl_rate:         0.05
+max_thrust_rate:                10
+
+time_decay_alpha:               2.0
+
+use_reduced_lkf:                False
+
+# Leader estimation parameters
+angle_variance:                 0.03
+position_noise:                 0.0025
+
+# attitude measurement refresh rate
+attitude_refresh_rate:          60
+
+# LKF parameters
+# process noise covariance matrix
+lkf_Q_pos_vertical:             0.001
+lkf_Q_pos_horizontal:           0.001
+
+lkf_Q_vel_horizontal:           0.006
+lkf_Q_vel_vertical:             0.001
+
+lkf_Q_attitude:                 0.0
+lkf_Q_ang_velocity:             0.0008
+lkf_Q_thrust:                   0.1
+
+lkf_Q_ax_offset:                0.0001
+lkf_Q_ay_offset:                0.0001
+
+lkf_R_position:                 0.0025
+lkf_R_attitude:                 0.03
+
+# LKF Redcued parameters
+lkf_reduced_Q_pos_vertical:             0.001
+lkf_reduced_Q_pos_horizontal:           0.001
+
+lkf_reduced_Q_vel_horizontal:           0.006
+lkf_reduced_Q_vel_vertical:             0.001
+
+lkf_reduced_Q_attitude:                 0.0
+lkf_reduced_Q_ang_velocity:             0.0008
+lkf_reduced_Q_thrust:                   0.1
+
+lkf_reduced_Q_ax_offset:                0.0001
+lkf_reduced_Q_ay_offset:                0.0001
+
+
+# pid controller parameters
+ctrl_enable:          1.0
+hor_Kp:               1.0
+vert_Kp:              5.0
+hor_Ki:               0.0
+vert_Ki:              1.0
+hor_Kd:               0.5
+vert_Kd:              1.5
+hor_sat:              0.2
+vert_sat:             5.0
+
+desired_roll:         0.03 # [rad]
+desired_pitch:        0.02 # [rad]
+desired_yaw:          0.1 # [rad]
+desired_thrust_force: 0.2 # [N], additional to gravity compensation

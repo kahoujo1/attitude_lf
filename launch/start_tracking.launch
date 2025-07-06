@@ -1,0 +1,18 @@
+<launch>
+ 	
+	<!-- <arg name="uav_name" default="$(optenv UAV_NAME uav40)"/>
+  <arg name="config" default="$(find leader_follower_controller_plugin)/tmux/leader/config/trajectory_loader.yaml"/>
+  <arg name="path" default="$(find leader_follower_controller_plugin)/tmux/leader"/> -->
+
+	<arg name="uav_name" default="$(optenv UAV_NAME uav2)"/>
+  <arg name="config" default="$(find leader_follower_controller_plugin)/tmux/simulation/config/trajectory_loader.yaml"/>
+  <arg name="path" default="$(find leader_follower_controller_plugin)/tmux/simulation"/>
+
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value=""/>
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch"/>
+
+  <arg name="mode" default="load"/>
+  <include file="$(find mrs_uav_trajectory_loader)/launch/common.launch" pass_all_args="true" />
+
+</launch>
