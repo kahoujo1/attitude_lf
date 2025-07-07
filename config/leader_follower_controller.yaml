@@ -32,6 +32,7 @@ position_noise:                 0.0025
 
 # attitude measurement refresh rate
 attitude_refresh_rate:          60
+position_refresh_rate:          60
 
 # LKF parameters
 # process noise covariance matrix

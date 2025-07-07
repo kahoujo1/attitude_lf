@@ -81,6 +81,7 @@ bool LeaderFollowerController::initialize(const ros::NodeHandle& nh, std::shared
   param_loader.loadParam("max_thrust_rate", drs_params_.max_thrust_rate);
   
   param_loader.loadParam("attitude_refresh_rate", drs_params_.attitude_refresh_rate);
+  param_loader.loadParam("position_refresh_rate", drs_params_.position_refresh_rate);
 
   param_loader.loadParam("time_decay_alpha", drs_params_.time_decay_alpha);
 
@@ -193,6 +194,7 @@ bool LeaderFollowerController::initialize(const ros::NodeHandle& nh, std::shared
   ROS_INFO("[LeaderFollowerController]: LKF initialized");  
 
   last_attitude_time = ros::Time::now();
+  last_position_time = ros::Time::now();
   leaderPos = geometry_msgs::Point();
   leaderPos.x = 0;
   leaderPos.y = 0;
@@ -205,6 +207,9 @@ bool LeaderFollowerController::initialize(const ros::NodeHandle& nh, std::shared
   leader_roll = 0;
   leader_pitch = 0;
   leader_yaw = 0;
+  leader_x = 0;
+  leader_y = 0;
+  leader_z = 0;
   ROS_INFO("-----------------------------------");
   ROS_INFO("[LeaderFollowerController]: initialized");
   ROS_INFO("-----------------------------------");
@@ -358,11 +363,19 @@ LeaderFollowerController::ControlOutput LeaderFollowerController::updateActive(c
       leader_pitch = mrs_lib::AttitudeConverter(leaderAtt).getPitch();
       leader_yaw = mrs_lib::AttitudeConverter(leaderAtt).getYaw();
       last_attitude_time = ros::Time::now();
-    } 
+    }
+    // slow down the leader position data
+    frequency = drs_params.position_refresh_rate;
+    if (ros::Time::now() - last_position_time > ros::Duration(1.0/frequency)) {
+      leader_x = leaderPos.x;
+      leader_y = leaderPos.y;
+      leader_z = leaderPos.z;
+      last_position_time = ros::Time::now();
+    }
     publish_leader_attitude(leaderAtt);
     // ----------------------- LKF --------------------------------
     VectorXd y = VectorXd::Zero(LKF_N_OUTPUTS);
-    y << leaderPos.x, leaderPos.y, leaderPos.z, leader_roll, leader_pitch, 0;
+    y << leader_x, leader_y, leader_z, leader_roll, leader_pitch, 0;
     // add artificial noise to the leader position
     VectorXd variance = VectorXd::Zero(LKF_N_OUTPUTS);
     variance << drs_params.position_noise, drs_params.position_noise, drs_params.position_noise, drs_params.angle_variance, drs_params.angle_variance, 0;

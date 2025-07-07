@@ -135,11 +135,13 @@ private:
 
   ros::Time current_time;
   ros::Time last_attitude_time;
+  ros::Time last_position_time;
 
   mpc_params default_params;
   geometry_msgs::Point leaderPos;
   geometry_msgs::Quaternion leaderAtt;
   double leader_roll, leader_pitch, leader_yaw;
+  double leader_x, leader_y, leader_z;
   double last_ctrl_thrust = 0;
   double ctrlRoll = 0;
   double ctrlPitch = 0;
