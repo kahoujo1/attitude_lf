@@ -79,4 +79,4 @@ windows:
   - slowdown:
       layout: tiled
       panes:
-        - export UAV_NAME=$UAV_NAME_2; waitForControl; ./../../../set_realtime_factor.sh 0.2
+        - export UAV_NAME=$UAV_NAME_2; waitForControl; ./../../../set_realtime_factor.sh 0.25

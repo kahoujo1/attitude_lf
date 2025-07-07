@@ -1,7 +1,7 @@
 trajectory:
   # Common options to be used for all trajectories (these are the default values, so you can omit them in this case).
   frame_id: ""
-  dt: 3.0
+  dt: 2.0
   delay: 0.0
   loop: true
   use_heading: true
