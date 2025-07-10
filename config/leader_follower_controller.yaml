@@ -34,6 +34,9 @@ position_noise:                 0.0025
 attitude_refresh_rate:          60
 position_refresh_rate:          60
 
+# FOV angle for leader follower simulation
+FOV_angle:                      1.047 # [rad], 60 degrees
+
 # LKF parameters
 # process noise covariance matrix
 lkf_Q_pos_vertical:             0.001

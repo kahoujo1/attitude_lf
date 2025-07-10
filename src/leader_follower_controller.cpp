@@ -90,6 +90,9 @@ bool LeaderFollowerController::initialize(const ros::NodeHandle& nh, std::shared
   // Leader estimation parameters ---------------------------------------------------------
   param_loader.loadParam("angle_variance", drs_params_.angle_variance);
   param_loader.loadParam("position_noise", drs_params_.position_noise);
+  
+  // FOV
+  param_loader.loadParam("FOV_angle", drs_params_.FOV_angle);
 
   // LKF LOADING
   
@@ -366,20 +369,30 @@ LeaderFollowerController::ControlOutput LeaderFollowerController::updateActive(c
     }
     // slow down the leader attitude data
     double frequency = drs_params.attitude_refresh_rate;
-    if (ros::Time::now() - last_attitude_time > ros::Duration(1.0/frequency)) {
+    // calculate the angle between the leader and follower to check FOV simulation
+    double leader_follower_angle = 0;
+    leader_follower_angle = std::atan2(leaderPos.y - currPos.y, leaderPos.x - currPos.x);
+    // check if the leader is in the field of view
+    if (std::abs(leader_follower_angle) < drs_params.FOV_angle){
+      // leader is in the field of view, update the parameters
+      if (ros::Time::now() - last_attitude_time > ros::Duration(1.0/frequency)) {
       leader_roll = mrs_lib::AttitudeConverter(leaderAtt).getRoll();
       leader_pitch = mrs_lib::AttitudeConverter(leaderAtt).getPitch();
       leader_yaw = mrs_lib::AttitudeConverter(leaderAtt).getYaw();
       last_attitude_time = ros::Time::now();
     }
-    // slow down the leader position data
-    frequency = drs_params.position_refresh_rate;
-    if (ros::Time::now() - last_position_time > ros::Duration(1.0/frequency)) {
-      leader_x = leaderPos.x;
-      leader_y = leaderPos.y;
-      leader_z = leaderPos.z;
-      last_position_time = ros::Time::now();
+      // slow down the leader position data
+      frequency = drs_params.position_refresh_rate;
+      if (ros::Time::now() - last_position_time > ros::Duration(1.0/frequency)) {
+        leader_x = leaderPos.x;
+        leader_y = leaderPos.y;
+        leader_z = leaderPos.z;
+        last_position_time = ros::Time::now();
+      }
+    } else {
+      ROS_INFO("[LeaderFollowerController]: Leader is out of FOV");
     }
+    
     publish_leader_attitude(leaderAtt);
     // ----------------------- LKF --------------------------------
     VectorXd y = VectorXd::Zero(LKF_N_OUTPUTS);
