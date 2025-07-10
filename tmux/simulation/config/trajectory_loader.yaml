@@ -6,7 +6,7 @@ trajectory:
   loop: true
   use_heading: true
   fly_now: true
-  offset: [5.0, 0.0, 5.0, 0.0]      # [x, y, z, heading]
+  offset: [10.0, 0.0, 5.0, 0.0]      # [x, y, z, heading]
   
   # If 'dynamic_uav_name' is true, the 'uavs' parameter is ignored and trajectory is loaded
   # to the UAV, specified by the 'uav_name' parameter from the 'trajectory/filename' parameter.

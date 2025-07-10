@@ -372,8 +372,9 @@ LeaderFollowerController::ControlOutput LeaderFollowerController::updateActive(c
     // calculate the angle between the leader and follower to check FOV simulation
     double leader_follower_angle = 0;
     leader_follower_angle = std::atan2(leaderPos.y - currPos.y, leaderPos.x - currPos.x);
+    ROS_INFO("[LeaderFollowerController]: Leader follower angle: %.3f deg\n", leader_follower_angle * 180.0 / M_PI);
     // check if the leader is in the field of view
-    if (std::abs(leader_follower_angle) < drs_params.FOV_angle){
+    if (std::abs(leader_follower_angle) < drs_params.FOV_angle/2){
       // leader is in the field of view, update the parameters
       if (ros::Time::now() - last_attitude_time > ros::Duration(1.0/frequency)) {
       leader_roll = mrs_lib::AttitudeConverter(leaderAtt).getRoll();
@@ -449,8 +450,6 @@ LeaderFollowerController::ControlOutput LeaderFollowerController::updateActive(c
     } else {
       mpc->setReferenceCombined(predictions, drs_params.time_decay_alpha, dt, offset);
     }
-    ROS_INFO("[LeaderFollowerController]: Offset: [%.3f, %.3f, %.3f]\n", offset.x(), offset.y(), offset.z());
-    ROS_INFO("[LeaderFollowerController]: Follower name: %s\n", follower_name.c_str());
     // ---------------- MPC STEPS --------------------------
     bool MPC_success;
     VectorXd ctrlAct;

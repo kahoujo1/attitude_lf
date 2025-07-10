@@ -23,8 +23,8 @@ mrs_uav_managers:
       human_switchable: true
       # multiple followers
       offset:
-        x: 5.0
-        y: 0.0
+        x: 10.0
+        y: -5.0
         z: 0.0 # [m], offset from the leader position
       follower_name: "uav1" # name of the follower UAV, used for multiple followers
       # which outputs the controller can provide
