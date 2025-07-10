@@ -431,7 +431,7 @@ void MPC::setReferenceConstant(Vector3d ref)
 }
 
 
-void MPC::setReferenceCombined(std::vector<std::pair<VectorXd, MatrixXd>> predictions, double alpha, double dt)
+void MPC::setReferenceCombined(std::vector<std::pair<VectorXd, MatrixXd>> predictions, double alpha, double dt, Vector3d offset)
 {
     refIsSet = true;
     VectorXd q = VectorXd::Zero(N_STATES + N_INPUTS);
@@ -446,9 +446,9 @@ void MPC::setReferenceCombined(std::vector<std::pair<VectorXd, MatrixXd>> predic
     // TODO: add additional info to the refence
     for (int i = 0; i <= MPC_PRED_HORIZON; i++)
     {
-        ref_aug(0) = predictions[i].first(0) - X_OFFSET; // x
-        ref_aug(1) = predictions[i].first(1); // y
-        ref_aug(2) = predictions[i].first(2); // z
+        ref_aug(0) = predictions[i].first(0) - offset.x(); // x
+        ref_aug(1) = predictions[i].first(1) - offset.y(); // y
+        ref_aug(2) = predictions[i].first(2) - offset.z(); // z
         // calculate the pseudoinverse of the covariance matrix
         covariance_pinverse = calculate_pseudoinverse(predictions[i].second);
         horizontal_scale_factor = covariance_pinverse(0,0);

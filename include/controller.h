@@ -36,7 +36,7 @@ class MPC{
 	//void setReferenceTrajectory(mrs_msgs::MpcPredictionFullState mrs_traj);
 	void updateState(VectorXd state_);
 	void setReferenceConstant(Vector3d ref); // set constant reference
-	void setReferenceCombined(std::vector<std::pair<VectorXd, MatrixXd>> predictions, double alpha, double dt);
+	void setReferenceCombined(std::vector<std::pair<VectorXd, MatrixXd>> predictions, double alpha, double dt, Vector3d offset = Vector3d::Zero()); // set reference based on the predictions
 	// others
 	bool referenceIsSet();
 	void setParameter(std::string paramName, MatrixXd input);

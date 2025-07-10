@@ -360,9 +360,9 @@ LeaderFollowerController::ControlOutput LeaderFollowerController::updateActive(c
     }
     if (leaderPos.z == -1) {
       ROS_INFO("[LeaderFollowerController]: Leader position not available, using current position");
-      leaderPos.x = currPos.x + X_OFFSET;
-      leaderPos.y = currPos.y;
-      leaderPos.z = currPos.z;
+      leaderPos.x = currPos.x + offset.x();
+      leaderPos.y = currPos.y + offset.y();
+      leaderPos.z = currPos.z + offset.z();
     }
     // slow down the leader attitude data
     double frequency = drs_params.attitude_refresh_rate;
@@ -432,9 +432,9 @@ LeaderFollowerController::ControlOutput LeaderFollowerController::updateActive(c
     // Vector3d test_ref = Vector3d(-20, -20, 2);
     // mpc->setReferenceConstant(test_ref);
     if (drs_params.use_reduced_lkf) {
-      mpc->setReferenceCombined(reduced_predictions, drs_params.time_decay_alpha, dt);
+      mpc->setReferenceCombined(reduced_predictions, drs_params.time_decay_alpha, dt, offset);
     } else {
-      mpc->setReferenceCombined(predictions, drs_params.time_decay_alpha, dt);
+      mpc->setReferenceCombined(predictions, drs_params.time_decay_alpha, dt, offset);
     }
     ROS_INFO("[LeaderFollowerController]: Offset: [%.3f, %.3f, %.3f]\n", offset.x(), offset.y(), offset.z());
     ROS_INFO("[LeaderFollowerController]: Follower name: %s\n", follower_name.c_str());
@@ -742,9 +742,9 @@ void LeaderFollowerController::publish_reference_pose(const geometry_msgs::Point
   geometry_msgs::PoseStamped pose;
   pose.header.frame_id = std::string(FOLLOWER_NAME)+"/world_origin";
   pose.header.stamp = current_time;
-  pose.pose.position.x = ref.x - X_OFFSET;
-  pose.pose.position.y = ref.y;
-  pose.pose.position.z = ref.z;
+  pose.pose.position.x = ref.x - offset.x();
+  pose.pose.position.y = ref.y - offset.y();
+  pose.pose.position.z = ref.z - offset.z();
   ph_reference_pose_.publish(pose);
 }
 
@@ -821,9 +821,9 @@ std::tuple<double, double, double> LeaderFollowerController::calculate_accelerat
 void LeaderFollowerController::publish_reference_error(const geometry_msgs::Point leader_pos, const geometry_msgs::Point uav_pos)
 {
   geometry_msgs::Vector3 ref_error;
-  ref_error.x = leader_pos.x - X_OFFSET - uav_pos.x;
-  ref_error.y = leader_pos.y - uav_pos.y;
-  ref_error.z = leader_pos.z - uav_pos.z;
+  ref_error.x = leader_pos.x - offset.x() - uav_pos.x;
+  ref_error.y = leader_pos.y - offset.y() - uav_pos.y;
+  ref_error.z = leader_pos.z - offset.z() - uav_pos.z;
   ph_ref_error_.publish(ref_error);
 }
 
