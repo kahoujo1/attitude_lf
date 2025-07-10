@@ -642,6 +642,282 @@ Visualization Manager:
           Visual Enabled: true
       Enabled: true
       Name: uav2
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Group
+          Displays:
+            - Class: rviz/MarkerArray
+              Enabled: true
+              Marker Topic: /uav3/trajectory_generation/markers/final
+              Name: final
+              Namespaces:
+                {}
+              Queue Size: 100
+              Value: true
+            - Class: rviz/MarkerArray
+              Enabled: true
+              Marker Topic: /uav3/trajectory_generation/markers/original
+              Name: original
+              Namespaces:
+                {}
+              Queue Size: 100
+              Value: true
+          Enabled: true
+          Name: TrajectoryGeneration
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Arrow Length: 0.30000001192092896
+              Axes Length: 0.30000001192092896
+              Axes Radius: 0.009999999776482582
+              Class: rviz/PoseArray
+              Color: 0; 0; 255
+              Enabled: true
+              Head Length: 0.07000000029802322
+              Head Radius: 0.029999999329447746
+              Name: MpcPredictionTrajectory
+              Queue Size: 10
+              Shaft Length: 0.23000000417232513
+              Shaft Radius: 0.009999999776482582
+              Shape: Arrow (Flat)
+              Topic: /uav3/control_manager/mpc_tracker/predicted_trajectory_debugging
+              Unreliable: true
+              Value: true
+            - Alpha: 1
+              Arrow Length: 0.30000001192092896
+              Axes Length: 0.10000000149011612
+              Axes Radius: 0.05000000074505806
+              Class: rviz/PoseArray
+              Color: 255; 25; 0
+              Enabled: true
+              Head Length: 0.07000000029802322
+              Head Radius: 0.029999999329447746
+              Name: MpcInnerReference
+              Queue Size: 10
+              Shaft Length: 0.23000000417232513
+              Shaft Radius: 0.009999999776482582
+              Shape: Axes
+              Topic: /uav3/control_manager/mpc_tracker/mpc_reference_debugging
+              Unreliable: true
+              Value: true
+            - Class: rviz/Group
+              Displays:
+                - Alpha: 1
+                  Arrow Length: 0.30000001192092896
+                  Axes Length: 0.30000001192092896
+                  Axes Radius: 0.009999999776482582
+                  Class: rviz/PoseArray
+                  Color: 255; 25; 0
+                  Enabled: true
+                  Head Length: 0.07000000029802322
+                  Head Radius: 0.029999999329447746
+                  Name: Poses
+                  Queue Size: 10
+                  Shaft Length: 0.23000000417232513
+                  Shaft Radius: 0.009999999776482582
+                  Shape: Arrow (Flat)
+                  Topic: /uav3/control_manager/mpc_tracker/trajectory_processed/poses
+                  Unreliable: true
+                  Value: true
+                - Class: rviz/MarkerArray
+                  Enabled: true
+                  Marker Topic: /uav3/control_manager/mpc_tracker/trajectory_processed/markers
+                  Name: Markers
+                  Namespaces:
+                    {}
+                  Queue Size: 100
+                  Value: true
+              Enabled: true
+              Name: PostprocessedTrajectory
+          Enabled: true
+          Name: MpcTracker
+        - Class: rviz/Group
+          Displays:
+            - Angle Tolerance: 0.009999999776482582
+              Class: rviz/Odometry
+              Covariance:
+                Orientation:
+                  Alpha: 0.5
+                  Color: 255; 255; 127
+                  Color Style: Unique
+                  Frame: Local
+                  Offset: 1
+                  Scale: 1
+                  Value: true
+                Position:
+                  Alpha: 0.30000001192092896
+                  Color: 204; 51; 204
+                  Scale: 1
+                  Value: true
+                Value: false
+              Enabled: true
+              Keep: 1
+              Name: odom_main
+              Position Tolerance: 0.009999999776482582
+              Queue Size: 10
+              Shape:
+                Alpha: 1
+                Axes Length: 0.5
+                Axes Radius: 0.10000000149011612
+                Color: 0; 25; 255
+                Head Length: 1
+                Head Radius: 0.30000001192092896
+                Shaft Length: 1
+                Shaft Radius: 0.05000000074505806
+                Value: Axes
+              Topic: /uav3/estimation_manager/odom_main
+              Unreliable: true
+              Value: true
+          Enabled: true
+          Name: EstimationManager
+        - Class: rviz/Group
+          Displays:
+            - Class: rviz/MarkerArray
+              Enabled: true
+              Marker Topic: /uav3/control_manager/safety_area_markers
+              Name: SafetyhArea
+              Namespaces:
+                "": true
+              Queue Size: 100
+              Value: true
+            - Class: rviz/MarkerArray
+              Enabled: true
+              Marker Topic: /uav3/control_manager/safety_area_coordinates_markers
+              Name: SafetyAreaCoordinates
+              Namespaces:
+                "": true
+              Queue Size: 100
+              Value: true
+            - Class: rviz/MarkerArray
+              Enabled: true
+              Marker Topic: /uav3/control_manager/disturbances_markers
+              Name: Disturbances
+              Namespaces:
+                {}
+              Queue Size: 100
+              Value: true
+            - Angle Tolerance: 0.009999999776482582
+              Class: rviz/Odometry
+              Covariance:
+                Orientation:
+                  Alpha: 0.5
+                  Color: 255; 255; 127
+                  Color Style: Unique
+                  Frame: Local
+                  Offset: 1
+                  Scale: 1
+                  Value: true
+                Position:
+                  Alpha: 0.30000001192092896
+                  Color: 204; 51; 204
+                  Scale: 1
+                  Value: true
+                Value: true
+              Enabled: true
+              Keep: 1
+              Name: control_reference
+              Position Tolerance: 0.009999999776482582
+              Queue Size: 10
+              Shape:
+                Alpha: 1
+                Axes Length: 1
+                Axes Radius: 0.10000000149011612
+                Color: 255; 25; 0
+                Head Length: 0.30000001192092896
+                Head Radius: 0.10000000149011612
+                Shaft Length: 1
+                Shaft Radius: 0.05000000074505806
+                Value: Axes
+              Topic: /uav3/control_manager/control_reference
+              Unreliable: true
+              Value: true
+            - Class: rviz/Group
+              Displays:
+                - Alpha: 1
+                  Arrow Length: 0.30000001192092896
+                  Axes Length: 0.30000001192092896
+                  Axes Radius: 0.009999999776482582
+                  Class: rviz/PoseArray
+                  Color: 0; 170; 0
+                  Enabled: true
+                  Head Length: 0.07000000029802322
+                  Head Radius: 0.029999999329447746
+                  Name: Poses
+                  Queue Size: 10
+                  Shaft Length: 0.23000000417232513
+                  Shaft Radius: 0.009999999776482582
+                  Shape: Arrow (Flat)
+                  Topic: /uav3/control_manager/trajectory_original/poses
+                  Unreliable: true
+                  Value: true
+                - Class: rviz/MarkerArray
+                  Enabled: true
+                  Marker Topic: /uav3/control_manager/trajectory_original/markers
+                  Name: Markers
+                  Namespaces:
+                    {}
+                  Queue Size: 100
+                  Value: true
+              Enabled: true
+              Name: OriginalTrajectory
+            - Alpha: 0.10000000149011612
+              Class: mrs_rviz_plugins/Bumper
+              Collision alpha: 0.5
+              Collision color: 255; 0; 0
+              Color: 204; 51; 204
+              Colorize collisions: true
+              Display mode: sensor types
+              Enabled: true
+              History Length: 1
+              Horizontal collision threshold: 1
+              Name: Bumper
+              Queue Size: 10
+              Show sectors with no data: false
+              Show undetected obstacles: true
+              Topic: /uav3/bumper/obstacle_sectors
+              Unreliable: true
+              Value: true
+              Vertical collision threshold: 1
+          Enabled: true
+          Name: ControlManager
+        - Alpha: 1
+          Class: rviz/RobotModel
+          Collision Enabled: false
+          Enabled: true
+          Links:
+            All Links Enabled: true
+            Expand Joint Details: false
+            Expand Link Details: false
+            Expand Tree: false
+            Link Tree Style: Links in Alphabetic Order
+            uav3/fcu:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+              Value: true
+            uav3/fcu/arms:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+              Value: true
+            uav3/fcu/props:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+              Value: true
+            uav3/fcu/uav_marker:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+              Value: true
+          Name: UAVModel
+          Robot Description: /uav3/robot_model
+          TF Prefix: ""
+          Update Interval: 0
+          Value: true
+          Visual Enabled: true
+      Enabled: true
+      Name: uav3
     - Class: rviz/InteractiveMarkers
       Enable Transparency: true
       Enabled: true
