@@ -138,6 +138,14 @@ bool LeaderFollowerController::initialize(const ros::NodeHandle& nh, std::shared
   param_loader.loadParam("vert_Kd", drs_params_.vert_Kd);
   param_loader.loadParam("hor_sat", drs_params_.hor_sat);
   param_loader.loadParam("vert_sat", drs_params_.vert_sat);
+  // offset and follower name parameters:
+  double x_offset, y_offset, z_offset;
+  nh_.getParam("mrs_uav_managers/control_manager/LeaderFollowerController/offset/x", x_offset);
+  nh_.getParam("mrs_uav_managers/control_manager/LeaderFollowerController/offset/y", y_offset);
+  nh_.getParam("mrs_uav_managers/control_manager/LeaderFollowerController/offset/z", z_offset);
+  offset = Eigen::Vector3d(x_offset, y_offset, z_offset);
+  nh_.getParam("mrs_uav_managers/control_manager/LeaderFollowerController/follower_name", follower_name);
+
   // | ------------------ finish loading params ----------------- |
 
   if (!param_loader.loadedSuccessfully()) {
@@ -428,6 +436,8 @@ LeaderFollowerController::ControlOutput LeaderFollowerController::updateActive(c
     } else {
       mpc->setReferenceCombined(predictions, drs_params.time_decay_alpha, dt);
     }
+    ROS_INFO("[LeaderFollowerController]: Offset: [%.3f, %.3f, %.3f]\n", offset.x(), offset.y(), offset.z());
+    ROS_INFO("[LeaderFollowerController]: Follower name: %s\n", follower_name.c_str());
     // ---------------- MPC STEPS --------------------------
     bool MPC_success;
     VectorXd ctrlAct;

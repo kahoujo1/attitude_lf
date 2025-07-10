@@ -161,6 +161,9 @@ private:
   void publish_reference_error(const geometry_msgs::Point leader_pos, const geometry_msgs::Point uav_pos);
 
   std::tuple<double, double, double> calculate_acceleration(double roll, double pitch, double yaw, double thrust);
+  // for multiple follower support
+  std::string follower_name;
+  Eigen::Vector3d offset;
 };
 
 }  // namespace leader_follower_controller
